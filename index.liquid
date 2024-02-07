@@ -1,0 +1,55 @@
+<div class="wrapper">
+
+{%  comment %} Can't assign arrays just number, boolean and string {% endcomment %}
+ {% assign myString = 'hello world' %}
+
+ <p> {{ myString }} </p>
+
+
+ {% capture myString2 %}
+    The quick brown fox jumps over the lazy dog.
+ {% endcapture %}
+ <p> {{ myString2 }} </p>
+
+
+ {%  assign age = 20 %}
+ {%  assign sex = 'male' %}
+
+ {% unless age > 20 %}
+    <p> you are young </p>  
+{%  else  %}
+<p> you are old </p>
+{% endunless %}
+
+{% if sex contains 'male' %}
+    <p> You are a male </p>
+{% endif %}
+
+  {% if age > 18 %}
+    <p> You are old enough to drink </p>
+    {%  comment %} can use or here {% endcomment %}
+{% elsif age == 17 and sex =='male' %}
+    <p> You are turning 18 soon! </p>
+  {% else %}
+    <p> You are not old enough to drink </p>
+
+{% endif %}
+
+
+{%  case age %}
+    {% when 24 %}
+        <p> 24 </p>
+    {% when 21  %}
+        <p> 21 </p>
+
+{% endcase %}
+
+
+{% comment %} Collections is a global collection from shopify with all the collecitons in the store and we can map through it{% endcomment %}
+{% for collection in collections %}
+
+<p> {{ collection.title }} </p>
+{% endfor %}
+
+
+</div>
